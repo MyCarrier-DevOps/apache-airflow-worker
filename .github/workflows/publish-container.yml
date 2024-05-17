@@ -32,7 +32,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v3
       with:
-        images: ghcr.io/mycarrier-devops/apache-airflow
+        images: ghcr.io/mycarrier-devops/apache-airflow-worker
         tags: type=ref,event=tag
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v1 
