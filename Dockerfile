@@ -14,7 +14,10 @@ FROM bitnami/airflow-worker:2.9.1-debian-12-r1
 USER root
 
 COPY --from=py312 /python3.12/python/bin/python3.12 /opt/bitnami/airflow/venv/bin
-COPY --from=py312 /python3.12/python/bin/pip3.12 /opt/bitnami/airflow/venv/bin
+COPY --from=py312 /python3.12/python/bin/pip3.12    /opt/bitnami/airflow/venv/bin
+COPY --from=py312 /python3.12/python/bin/python3.12 /opt/bitnami/python/bin/
+COPY --from=py312 /python3.12/python/bin/pip3.12    /opt/bitnami/python/bin/
+COPY --from=py312 /python3.12/python/lib/           /opt/bitnami/python/lib/
 
 COPY --from=cuesetup /cue /usr/local/sbin/cue
 COPY requirements.txt .
