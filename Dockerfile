@@ -23,6 +23,5 @@ COPY --from=cuesetup /cue /usr/local/sbin/cue
 COPY requirements.txt .
 
 RUN apt-get update && apt-get install unixodbc unixodbc-dev -y
-RUN pip install -r requirements.txt
-
 USER 1001
+RUN pip install -r requirements.txt
