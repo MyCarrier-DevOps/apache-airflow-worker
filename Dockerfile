@@ -31,3 +31,5 @@ RUN apt-get update; ACCEPT_EULA=Y apt-get install -y msodbcsql18;
 
 USER 1001
 RUN . /opt/bitnami/airflow/venv/bin/activate && pip install -r requirements.txt; deactivate
+ENTRYPOINT [ "/opt/bitnami/scripts/airflow-worker/entrypoint.sh" ]
+CMD [ "/opt/bitnami/scripts/airflow-worker/run.sh" ]
