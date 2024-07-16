@@ -22,12 +22,11 @@ COPY --from=py312 /python3.12/python/lib/           /opt/bitnami/python/lib/
 COPY --from=cuesetup /cue /usr/local/sbin/cue
 COPY requirements.txt .
 
-RUN apt-get update && apt-get install unixodbc unixodbc-dev -y
+RUN apt-get update && apt-get install curl gpg unixodbc unixodbc-dev -y 
 
-RUN apt-get update && apt-get install curl gpg -y
 RUN curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
 RUN curl https://packages.microsoft.com/config/debian/12/prod.list | tee /etc/apt/sources.list.d/mssql-release.list
-RUN apt-get update; ACCEPT_EULA=Y apt-get install -y msodbcsql18; 
+RUN apt-get update; ACCEPT_EULA=Y apt-get install -y msodbcsql18 && apt-get clean && apt-get autoremove --yes && rm -rf /var/lib/apt/lists/*; 
 
 USER 1001
 RUN . /opt/bitnami/airflow/venv/bin/activate && pip install -r requirements.txt; deactivate
