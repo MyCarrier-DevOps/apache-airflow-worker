@@ -5,7 +5,7 @@ PyYaml~=6.0.1
 pycue==0.1.0
 hvac==2.2.0
 PyGithub==2.2.0
-Requests==2.31.0
+Requests==2.33.0
 pyodbc~=5.1.0
 azure-identity~=1.16.0
 azure-core==1.30.1
